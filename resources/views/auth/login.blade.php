@@ -1,74 +1,94 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ config('app.name') }}</title>
 
-@section('content')
-<div class="container" style="margin-top: 100px;">
-  <div class="container" style="margin-top: 20px;">
-    <div class="columns is-mobile is-centered">
-      <div class="column is-half" style="max-width: 500px;">
-        <div class="box">
-          <div class="media-content">
-            <div class="content" style="text-align: center; padding: 20px 0px 0px 0px;">
-              <img src="{{asset('img/logo-kanggo.png')}}" style="width: 150px;" />
-              <h3 class="title is-4">Login</h3>
-              <h5 style="padding-top: 10px;" class="subtitle is-6">Sistem Informasi Gereja</h5>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-              <div> 
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                  <div class="columns is-centered" style="margin-top: 20px;">
-                    <div class="column" style="max-width: 300px;">
-                      <div class="field">
-                        <div class="control">
-                          <input placeholder="Alamat email" id="email" type="email" class="input is-info @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        </div>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                      </div>
-                    </div>
-                  </div>
-                  <div class="columns is-centered">
-                    <div class="column" style="max-width: 300px;">
-                      <div class="field">
-                        <div class="control">
-                          <input placeholder="Password" id="password" type="password" 
-                            class="input is-info @error('password') is-invalid @enderror" 
-                            name="password" value="{{ old('password') }}" 
-                            required autocomplete="password">
-                          @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                          @enderror
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous"/>
 
-                  <div class="columns is-centered" style="margin-top: 20px;">
-                    <div class="column" style="max-width: 300px;">
-                      <div class="level">
-                        <div class="level-left">
-                        </div>
-                        <div class="level-right">
-                          <button type="submit" class="button is-light">
-                            {{ __('Login') }}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                    
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
     </div>
-  </div>
-</div>
+    <!-- /.login-logo -->
 
-@endsection
+    <!-- /.login-box-body -->
+    <div class="card">
+        <div class="card-body login-card-body">
+            <p class="login-box-msg">Sign in to start your session</p>
+
+            <form method="post" action="{{ url('/login') }}">
+                @csrf
+
+                <div class="input-group mb-3">
+                    <input type="email"
+                           name="email"
+                           value="{{ old('email') }}"
+                           placeholder="Email"
+                           class="form-control @error('email') is-invalid @enderror">
+                    <div class="input-group-append">
+                        <div class="input-group-text"><span class="fas fa-envelope"></span></div>
+                    </div>
+                    @error('email')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="password"
+                           name="password"
+                           placeholder="Password"
+                           class="form-control @error('password') is-invalid @enderror">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                    @error('password')
+                    <span class="error invalid-feedback">{{ $message }}</span>
+                    @enderror
+
+                </div>
+
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember Me</label>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    </div>
+
+                </div>
+            </form>
+
+            <p class="mb-1">
+                <a href="{{ route('password.request') }}">I forgot my password</a>
+            </p>
+            <p class="mb-0">
+                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+            </p>
+        </div>
+        <!-- /.login-card-body -->
+    </div>
+
+</div>
+<!-- /.login-box -->
+
+<script src="{{ mix('js/app.js') }}" defer></script>
+
+</body>
+</html>
