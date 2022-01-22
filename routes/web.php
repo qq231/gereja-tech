@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\DataJemaat;
-use App\Http\Livewire\Home;
+use App\Http\Livewire\Jemaat\JemaatList;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Home;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +20,5 @@ Route::get('/', function () {
 });
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/home', Home::class)->name('home');
-Route::get('/data-jemaat', DataJemaat::class)->name('data-jemaat');
+Route::get('/data-jemaat', JemaatList::class)->name('data-jemaat');

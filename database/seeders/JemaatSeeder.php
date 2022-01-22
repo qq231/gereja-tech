@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Jemaat;
 use Illuminate\Database\Seeder;
 
 class JemaatSeeder extends Seeder
@@ -13,6 +14,7 @@ class JemaatSeeder extends Seeder
      */
     public function run()
     {
+      Jemaat::factory(100)->create();
         //
     }
 }
