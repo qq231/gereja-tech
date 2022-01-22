@@ -33,10 +33,6 @@ class CreateJemaatsTable extends Migration
             $table->integer('parent_id')->nullable();
             $table->boolean('has_family')->default(false);
             $table->string('pendidikan')->nullable();
-            $table->boolean('has_baptis')->default(false);
-            $table->date('tgl_baptis')->nullable();
-            $table->boolean('has_sidi')->default(false);
-            $table->date('tgl_sidi')->nullable();
             $table->string('status_jemaat')->nullable(); // SIMPATISAN, ANGGOTA
             $table->timestamps();
         });

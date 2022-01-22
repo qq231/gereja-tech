@@ -28,7 +28,7 @@
                             </div> -->
 
                             <div class="card-tools">
-                                <a href="{{ route('home') }}" class="btn btn-light btn-sm">
+                                <a href="{{ route('data-jemaat.create') }}" class="btn btn-light btn-sm">
                                   Tambah</a>
                             </div>
                         </div>
