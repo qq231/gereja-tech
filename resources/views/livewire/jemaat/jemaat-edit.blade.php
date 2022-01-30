@@ -4,13 +4,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Input Data Jemaat</h1>
+                    <h1>Edit Data Jemaat</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{{ route('data-jemaat') }}">Data Jemaat</a></li>
-                        <li class="breadcrumb-item active">Input</li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div>
             </div>
@@ -236,9 +236,14 @@
                             </div>
                           </div>
                         </div>
-                        <div class="card-footer">
-                          <button type="button" wire:click="clear" class="btn btn-default">Clear</button>
-                          <button type="submit" class="btn btn-primary">{{ $isEdit ? 'Update' : 'Simpan' }}</button>
+                        <div class="card-footer" style="display:flex; justify-content: space-between;">
+                          <div>
+                            <button type="button" wire:click="clear" class="btn btn-default">Clear</button>
+                            <button type="submit" class="btn btn-primary">{{ $isEdit ? 'Update' : 'Simpan' }}</button>
+                          </div>
+                          <div>
+                            <button type="button" wire:click="delete" class="btn btn-danger">Hapus Data</button>
+                          </div>
                         </div>
                         <!-- /.card-body -->
                     </div>

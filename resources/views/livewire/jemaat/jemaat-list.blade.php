@@ -23,12 +23,21 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <!-- <div class="card-title">
-                              Daftar Jemaat
-                            </div> -->
+                            <div class="card-title">
+                              <div class="dropdown">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-filter"></i>&nbsp; Filter
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                  <li><a class="dropdown-item" href="#">Action</a></li>
+                                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                              </div>
+                            </div>
 
                             <div class="card-tools">
-                                <a href="{{ route('data-jemaat.create') }}" class="btn btn-light btn-sm">
+                                <a href="{{ route('data-jemaat.create') }}" class="btn btn-light">
                                   Tambah</a>
                             </div>
                         </div>
@@ -48,7 +57,11 @@
                             <tbody>
                               @forelse ($jemaat as $val)
                                 <tr>
-                                  <td>{{ $val->nama_lengkap }}</td>
+                                  <td>
+                                    <a href="{{ url('data-jemaat/'.$val->id.'/edit') }}">
+                                      {{ $val->nama_lengkap }}
+                                    </a>
+                                  </td>
                                   <td>{{ $val->kelamin === 0 ? 'Pria' : 'Wanita' }}</td>
                                   <td>{{ $val->mobile_phone }}</td>
                                   <td>{{ $val->tempat_lahir }}</td>

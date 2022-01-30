@@ -44,7 +44,7 @@ class JemaatCreate extends Component
       'tgl_lahir' => 'required',
       'mobile_phone' => 'required',
     ]);
-    Jemaat::create($validate);
+    Jemaat::create($this->state);
     return redirect()->route('data-jemaat');
   }
 

@@ -5,6 +5,7 @@ use App\Http\Livewire\Jemaat\JemaatList;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Home;
 use App\Http\Livewire\Jemaat\JemaatCreate;
+use App\Http\Livewire\Jemaat\JemaatEdit;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,4 @@ Route::get('/', function () {
 Route::get('/home', Home::class)->name('home');
 Route::get('/data-jemaat', JemaatList::class)->name('data-jemaat');
 Route::get('/data-jemaat/create', JemaatCreate::class)->name('data-jemaat.create');
+Route::get('/data-jemaat/{jemaatId}/edit', JemaatEdit::class)->name('data-jemaat.edit');
